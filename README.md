@@ -2,7 +2,7 @@
 The technical details and resources of the Liebesbrunnen
 
 <iframe src="https://player.vimeo.com/video/122400494?color=c40814" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/122400494">Liebesbrunnen</a> from <a href="https://vimeo.com/user1647525">Gil Fuser</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-![Alt text](https://player.vimeo.com/video/122400494?color=c40814)
+![Alt text](https://vimeo.com/122400494)
 
 The artistic concept and a video of the Liebesbrunnen in action can be seen in the link https://vimeo.com/122400494.
 

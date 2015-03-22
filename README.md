@@ -193,7 +193,7 @@ void setup() {
 }
 void draw() {
   float xoff = yoff; // Option #2: 1D Noise
-  float delayTime = constrain(map(noise(yoff)*10, 1, 7, 1, 96), 1, 96);    // Option #2: 1D Noise
+  float delayTime = constrain(map(noise(yoff)*10, 1, 7, 1, 96), 1, 96);
   yoff = (yoff+0.01) % nDelayFrames;
   nDelayFrames = int(delayTime);
   if (video.available()) {
@@ -201,14 +201,18 @@ void draw() {
     video.loadPixels();
 
     currentFrame = (currentFrame-1 + nDelayFrames) % nDelayFrames;
-    currentFrame2 = (currentFrame +30)%nDelayFrames;  //+30= delay time. must be less than nDelayFrames
-    currentFrame3 = (currentFrame +60)%nDelayFrames;  //+60= delay time. must be less than nDelayFrames
+    // +30= delay time. must be less than nDelayFrames
+    currentFrame2 = (currentFrame +30)%nDelayFrames;
+    // +60= delay time. must be less than nDelayFrames
+    currentFrame3 = (currentFrame +60)%nDelayFrames;
     for (int x = 0; x < video.width; x++) {
       for (int y = 0; y < video.height; y++) {
         // flip the image horizontally
-        framesH[currentFrame].pixels[y*video.width + x] = video.pixels[y*video.width+(video.width-(x+1))];
+        framesH[currentFrame].pixels[y*video.width + x] = 
+        video.pixels[y*video.width+(video.width-(x+1))];
         // flip the image both horizontally and vertically
-        framesV[currentFrame].pixels[y*(video.width) + x] = video.pixels[(video.height - 1 - y)*(video.width) + x];
+        framesV[currentFrame].pixels[y*(video.width) + x] = 
+        video.pixels[(video.height - 1 - y)*(video.width) + x];
       }
     }
 // desaturate the image
@@ -227,8 +231,10 @@ void draw() {
     framesV[currentFrame3].updatePixels();
     //framesH[currentFrame2].updatePixels();
     image(framesH[currentFrame], 0, 0, width, height);
-    blend(framesV[currentFrame3], 0, 0, width, height, 0, 0, width, height, OVERLAY);  //try with ADD, DARKEST etc here. see blend help
-    //blend(framesH[currentFrame2], 0, 0, width, height, 0, 0, width, height, OVERLAY);  // if I use this, the framerate drops dramatically. Why?
+    //try with ADD, DARKEST etc here. see blend help
+    blend(framesV[currentFrame3], 0, 0, width, height, 0, 0, width, height, OVERLAY);
+    // if I use this next, the framerate drops dramatically. I would like to know why!
+    //blend(framesH[currentFrame2], 0, 0, width, height, 0, 0, width, height, OVERLAY);
 
     updatePixels();
   }

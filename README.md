@@ -248,7 +248,6 @@ s.meter;
 s.plotTree;
 p = SerialPort("/dev/ttyUSB0", 115200, crtscts: true);
 p.close;
-///////____________________________________________________________\\\\\\\
 
 (
 ~sourceG = Group.before;
@@ -261,7 +260,9 @@ SynthDef(\dryS,	{ | /*in=[0,1],*/ out, gate = 1, release = 0.3, pitchDry |
 	dry = AudioIn.ar([1,2]);
 	env = Env.asr(1, 1, 1, \sin);
 
-	pitchDry = PitchShift.ar( Compander.ar(dry, dry, 0.2, 1.5, 0.3, 0.002, 0.06, 0.75), grainSize, ExpRand(5, 40).round*0.1, LFDNoise3.kr(0.054, 0.5, 2), LFNoise2.kr(0.0313, grainSize-0.05, grainSize).lag3(0.24));
+	pitchDry = PitchShift.ar( Compander.ar(dry, dry, 0.2, 1.5, 0.3, 0.002, 0.06, 0.75), 
+	grainSize, ExpRand(5, 40).round*0.1, LFDNoise3.kr(0.054, 0.5, 2), LFNoise2.kr(0.0313, 
+	grainSize-0.05, grainSize).lag3(0.24));
 
 	sig = EnvGen.kr(env, gate, doneAction:2) * pitchDry;
 	Out.ar(out, sig);
@@ -274,7 +275,8 @@ SynthDef(\wetS,	{ |in, out, gate = 1|
 	env = Env.asr(1, 1, 2, \sin);
 	sig = HPF.ar(In.ar(in, 2), 192);
 
-	wet = Splay.ar(PitchShift.ar(LocalIn.ar(2) + sig, ExpRand(0.3, 3), LFNoise2.kr(0.0334, 0.2, 2).lag3(0.321), ExpRand(0.2, 2.0), ExpRand(0.5, 2.0) ));
+	wet = Splay.ar(PitchShift.ar(LocalIn.ar(2) + sig, ExpRand(0.3, 3), 
+	LFNoise2.kr(0.0334, 0.2, 2).lag3(0.321), ExpRand(0.2, 2.0), ExpRand(0.5, 2.0) ));
 	wet = OnePole.ar(wet, 0.47);
 	wet = OnePole.ar(wet, -0.079);
 
@@ -308,7 +310,9 @@ SynthDef(\amp,	{
 	in = In.ar(in,2);
 	in2 = In.ar(in2,2);
 	in3 = In.ar(in3,2);
-	sig = Median.ar(11, (BHiPass.ar(Mix.ar(in+(in2/2)+(in3*2)), 100, 1).linlin(0.0001, 0.08, 5.0, 255.0).lag3(0.48)));
+	sig = Median.ar(11, 
+		(BHiPass.ar(Mix.ar(in+(in2/2)+(in3*2)), 
+		100, 1).linlin(0.0001, 0.08, 5.0, 255.0).lag3(0.48)));
 	trig = Impulse.kr(rate);
 	amp = Amplitude.kr(sig, att, rel, inNum.reciprocal);
 	SendReply.kr(trig, '/amp', [amp]);  // Get ampl. on the server and send to the language

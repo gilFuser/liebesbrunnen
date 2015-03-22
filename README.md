@@ -239,7 +239,7 @@ void draw() {
 
 ## ...and the Supercollider
 
-```Supercollider
+```SuperCollider
 s.freeAll;
 s.quit;
 s.options.memSize = 262144;

@@ -12,7 +12,7 @@ Every time the Liebesbrunnen changes from the horizontal position to vertical or
 
 ## Here it goes the Arduino Programm:
 
-```c_cpp
+```Arduino
 //  For more informations about this stetch, see Arduino/File/Examples/Basics/Digital/Debounce
 //  and Arduino/File/Examples/Basics/Communication/Serial... one of those. I need to check wich one
 // give names to the pins, regarding the LEDs colors

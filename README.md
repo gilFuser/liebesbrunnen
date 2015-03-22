@@ -1,5 +1,4 @@
-# Liebesbrunnen
-####The technical details and resources of the Liebesbrunnen
+# Liebesbrunnen####Technical details and resources of the Liebesbrunnen
 
 The artistic concept and a video of the Liebesbrunnen in action can be seen in the link https://vimeo.com/122400494.
 

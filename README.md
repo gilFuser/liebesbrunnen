@@ -9,9 +9,10 @@ There's a web-cam attached in one of the extremities of it to record what goes o
 The sound is captured by a contact microphone made from a piezo disc and processed with Supercollider. Delays with altered pitches are added to the original sound.
 Every time the Liebesbrunnen changes from the horizontal position to vertical or vice-versa the tilt sensor re-starts some synths with random parameters in order to the Liebesbrunnen to sounds differently, in a more or less unpredictable way. The tilt sensor state also changes the LEDs controlled by an Arduino program. The sound amplitude controls the brightness of the white LED.
 
-# Here it goes the Arduino Programm:
 
-```
+## Here it goes the Arduino Programm:
+
+```c_cpp
 //  For more informations about this stetch, see Arduino/File/Examples/Basics/Digital/Debounce
 //  and Arduino/File/Examples/Basics/Communication/Serial... one of those. I need to check wich one
 // give names to the pins, regarding the LEDs colors
@@ -149,5 +150,5 @@ void loop() {
 }
 ```
 
-
+## The Processing part:
 

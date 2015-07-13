@@ -247,6 +247,9 @@ void draw() {
 ## ...and the Supercollider
 
 ```SuperCollider
+
+// this is outdated. I'm going to upload the new code soon
+
 s.freeAll;
 s.quit;
 s.options.memSize = 262144;
